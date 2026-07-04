@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Edict Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+
+    <!-- Navbar -->
+    <nav class="bg-black sticky top-0 z-50 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events" class="h-10">
+                <span class="text-2xl font-bold">Edict Events</span>
+            </div>
+            <a href="index.html" class="text-indigo-400 hover:text-white">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="bg-gradient-to-br from-indigo-900 to-violet-900 py-28 text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="heading-font text-6xl font-bold mb-6">Get In Touch</h1>
+            <p class="text-xl text-zinc-300">We're here to help you create impactful events</p>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16">
+        
+        <!-- Contact Form -->
+        <div>
+            <h2 class="text-4xl font-bold mb-8">Send Us a Message</h2>
+            <form id="contactForm" class="space-y-8">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm text-zinc-400 mb-2">Full Name</label>
+                        <input type="text" required class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-zinc-400 mb-2">Company</label>
+                        <input type="text" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-2">Email Address</label>
+                    <input type="email" required class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-indigo-500">
+                </div>
+                
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-indigo-500">
+                </div>
+                
+<div>
+                        <label class="block text-sm text-zinc-400 mb-2">Inquiry Type <span style="color:#ef4444">*</span></label>
+                        <select required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                            <option value="">Select an option...</option>
+                            <option value="host">Host / Organize an Event</option>
+                            <option value="speak">Become a Speaker</option>
+                            <option value="sponsor">Sponsor an Event</option>
+                            <option value="media">Media Partner</option>
+                            <option value="attend">Attend an Upcoming Event</option>
+                            <option value="other">General Inquiry</option>
+                        </select>
+                    </div>
+
+
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-2">Message</label>
+                    <textarea rows="6" required class="w-full bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-5 focus:outline-none focus:border-indigo-500 resize-none"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 py-6 rounded-3xl text-xl font-semibold hover:scale-105 transition">
+                    Send Message
+                </button>
+            </form>
+        </div>
+
+        <!-- Contact Info & Map -->
+        <div class="space-y-12">
+            
+            <!-- Contact Details -->
+            <div>
+                <h3 class="text-3xl font-bold mb-8">Get in Touch</h3>
+                <div class="space-y-8">
+                    <div class="flex gap-5">
+                        <i class="fas fa-envelope text-3xl text-indigo-400 mt-1"></i>
+                        <div>
+                            <p class="font-medium">Email</p>
+                            <a href="mailto:info@edict-events.com" class="text-indigo-400 hover:underline">info@edict-events.com</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <i class="fas fa-phone text-3xl text-indigo-400 mt-1"></i>
+                        <div>
+                            <p class="font-medium">Phone</p>
+                            <a href="tel:+917835080882" class="text-indigo-400 hover:underline">+91 78350 80882</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <i class="fas fa-map-marker-alt text-3xl text-indigo-400 mt-1"></i>
+                        <div>
+                            <p class="font-medium">Location</p>
+                            <p class="text-zinc-400">Global Virtual Events Platform<br>India | USA | Europe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Our Global Reach</h3>
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-700">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.057!2d77.209!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM2JzUwLjAiTiA3N8KwMTInMzIuNCJF!5e0!3m2!1sen!2sin!4v1690000000000" 
+                            width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
+        © 2026 Edict Events • All Rights Reserved
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("✅ Thank you! Your message has been received. We'll get back to you soon.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
