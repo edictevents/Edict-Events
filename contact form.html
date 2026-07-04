@@ -1,0 +1,82 @@
+<!-- ==================== CONTACT FORM SECTION ==================== -->
+    <section id="contact" class="py-24 bg-white text-black border-t border-zinc-800 scroll-mt-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-bold mb-4">Let's Start a Conversation</h2>
+                <p class="text-zinc-800 text-lg max-w-md mx-auto">Ready to host an event, speak, sponsor, or partner with us?</p>
+            </div>
+
+            <div class="bg-zinc-900 rounded-3xl p-8 md:p-10 border border-zinc-700 shadow-2xl">
+                <form id="contactForm" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm text-zinc-400 mb-2">Full Name <span style="color:#ef4444">*</span></label>
+                            <input type="text" required placeholder="John Doe" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-zinc-400 mb-2">Company</label>
+                            <input type="text" placeholder="Your Organization" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-zinc-400 mb-2">Email Address <span style="color:#ef4444">*</span></label>
+                        <input type="email" required placeholder="you@company.com" 
+                               class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-zinc-400 mb-2">Inquiry Type <span style="color:#ef4444">*</span></label>
+                        <select required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                            <option value="">Select an option...</option>
+                            <option value="host">Host / Organize an Event</option>
+                            <option value="speak">Become a Speaker</option>
+                            <option value="sponsor">Sponsor an Event</option>
+                            <option value="media">Media Partner</option>
+                            <option value="attend">Attend an Upcoming Event</option>
+                            <option value="other">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-zinc-400 mb-2">Message <span style="color:#ef4444">*</span></label>
+                        <textarea rows="6" required placeholder="Tell us more about your requirements..." 
+                                  class="w-full bg-zinc-400 border border-zinc-700 rounded-3xl px-6 py-5 focus:outline-none focus:border-purple-500 resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white py-6 rounded-3xl text-xl font-semibold hover:shadow-xl transition-all hover:scale-[1.02]">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <p class="text-center text-zinc-500 mt-10">
+                Or email us directly: <strong>info@edict-events.com</strong>
+            </p>
+        </div>
+    </section>
+<section>
+    <script>
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("✅ Thank you! Your message has been received. We'll get back to you soon.");
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</section>
