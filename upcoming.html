@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - Edict Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        .gradient-glow {
+            box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.15);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 40px -5px rgba(139, 92, 246, 0.3);
+            border-color: rgba(167, 139, 250, 0.4);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-slate-100">
+
+    <!-- Navbar -->
+    <nav class="bg-black sticky top-0 z-50 border-b border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Logo" class="h-10">
+                <span class="text-2xl font-bold tracking-wider text-white">Edict Events</span>
+            </div>
+            <a href="index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 font-medium transition text-sm">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="relative py-24 overflow-hidden border-b border-zinc-900 bg-gradient-to-b from-zinc-950 via-zinc-900/30 to-zinc-950">
+        <!-- Floating Ambient Glows -->
+        <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-1/4 translate-x-1/2 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-semibold tracking-wider uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                Next Showcase
+            </div>
+            <h1 class="heading-font text-5xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-8">
+                Upcoming Events
+            </h1>
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+                Empowering industries, designers, and builders. Explore our premier schedule of upcoming physical exhibitions, virtual webinars, and summits.
+            </p>
+        </div>
+    </header>
+
+    <!-- Featured Event Section (INTERIAEXPO 2026) -->
+    <main class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-16 items-start">
+            
+            <!-- Left Column: Details & Schedule -->
+            <div class="lg:col-span-8 space-y-12">
+                
+                <!-- Main Header & Image Banner -->
+                <div class="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-900">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[16/9] mb-8">
+                        <img src="upcoming events INTERIAEXPO 2026.png" alt="INTERIAEXPO 2026 Exhibition" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span class="bg-violet-600 text-white text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-wider">
+                                Featured Exhibition
+                            </span>
+                        </div>
+                    </div>
+
+                    <h2 class="heading-font text-4xl font-bold text-white mb-6">
+                        INTERIAEXPO 2026
+                    </h2>
+                    
+                    <p class="text-zinc-300 text-lg leading-relaxed mb-8">
+                        INTERIAEXPO is North India's premier B2B expo showcasing the best innovations in interior styling, architectural layouts, sustainable exterior finishes, and smart home automation. Building a community of top developers, architects, and designers to share state-of-the-art products.
+                    </p>
+
+                    <!-- Key Pillars -->
+                    <div class="grid sm:grid-cols-3 gap-6">
+                        <div class="bg-zinc-900/80 p-6 rounded-2xl border border-zinc-800">
+                            <i class="fas fa-couch text-2xl text-violet-400 mb-4"></i>
+                            <h4 class="font-semibold text-white mb-2">Modern Interiors</h4>
+                            <p class="text-xs text-zinc-400">Contemporary concepts and functional modular layouts.</p>
+                        </div>
+                        <div class="bg-zinc-900/80 p-6 rounded-2xl border border-zinc-800">
+                            <i class="fas fa-drafting-table text-2xl text-indigo-400 mb-4"></i>
+                            <h4 class="font-semibold text-white mb-2">Architecture</h4>
+                            <p class="text-xs text-zinc-400">Smart urban spaces, eco-materials, and design trends.</p>
+                        </div>
+                        <div class="bg-zinc-900/80 p-6 rounded-2xl border border-zinc-800">
+                            <i class="fas fa-leaf text-2xl text-emerald-400 mb-4"></i>
+                            <h4 class="font-semibold text-white mb-2">Eco Exteriors</h4>
+                            <p class="text-xs text-zinc-400">Weather-resistant cladding and solar integration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Schedule -->
+                <div class="space-y-6">
+                    <h3 class="heading-font text-3xl font-bold text-white">Event Schedule</h3>
+                    
+                    <!-- Day 1 -->
+                    <div class="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-8 space-y-6">
+                        <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4">
+                            <span class="text-lg font-bold text-indigo-400">DAY 01</span>
+                            <span class="text-sm text-zinc-400 font-medium">Inauguration & Visionary Panels</span>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">10:00 AM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Opening Keynote: Future Living & Green Architecture</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Exploring circular economics in building materials and zero-carbon facades.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">12:00 PM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Panel: Smart Home Automation & AI-Driven Interiors</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Connecting IoT networks with custom spatial modular layouts.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">03:00 PM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">B2B Material Networking Hub</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Exhibitors launch and private architect-to-builder matchmaking roundtables.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-8 space-y-6">
+                        <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4">
+                            <span class="text-lg font-bold text-indigo-400">DAY 02</span>
+                            <span class="text-sm text-zinc-400 font-medium">Workshops & Collaboration</span>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">10:30 AM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Interactive Facades and Facia Design Clinic</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">A developer masterclass on cladding durability, wind-load patterns, and aesthetics.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">02:00 PM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Collaborative Procurement in India's Real Estate</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Streamlining raw material sourcing pipelines for commercial infrastructure.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">05:00 PM</div>
+                                <div>
+                                    <h4 class="font-semibold text-white">INTERIA Design Excellence Awards & Mixer</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Celebrating outstanding architectural concepts of the fiscal year.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Registration Form & Fast Facts -->
+            <div class="lg:col-span-4 space-y-8 lg:sticky lg:top-28">
+                
+                <!-- Quick Info Box -->
+                <div class="bg-zinc-900/60 border border-zinc-900 rounded-3xl p-8 space-y-6">
+                    <h4 class="heading-font text-xl font-bold text-white">Event Details</h4>
+                    
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="far fa-calendar-alt text-violet-400 w-5"></i>
+                            <div>
+                                <p class="text-xs text-zinc-500 font-semibold">DATE</p>
+                                <p class="text-zinc-300 font-medium">To Be Announced (2026)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-violet-400 w-5"></i>
+                            <div>
+                                <p class="text-xs text-zinc-500 font-semibold">VENUE</p>
+                                <p class="text-zinc-300 font-medium">Pragati Maidan, New Delhi</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-user-friends text-violet-400 w-5"></i>
+                            <div>
+                                <p class="text-xs text-zinc-500 font-semibold">AUDIENCE</p>
+                                <p class="text-zinc-300 font-medium">Architects, Builders, Designers</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-building text-violet-400 w-5"></i>
+                            <div>
+                                <p class="text-xs text-zinc-500 font-semibold">EXHIBITORS</p>
+                                <p class="text-zinc-300 font-medium">150+ Leading Brands Expected</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Registration Form Card -->
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-violet-600/10 rounded-full blur-2xl"></div>
+                    
+                    <h4 class="heading-font text-2xl font-bold text-white mb-2">Register Interest</h4>
+                    <p class="text-xs text-zinc-400 mb-6">Stay informed on ticket releases, speaker line-ups, and booking spaces.</p>
+                    
+                    <form id="interestForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Your Name</label>
+                            <input type="text" required placeholder="John Doe" 
+                                   class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Email Address</label>
+                            <input type="email" required placeholder="john@example.com" 
+                                   class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Professional Role</label>
+                            <select class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-zinc-300 focus:outline-none transition">
+                                <option>Architect / Spatial Planner</option>
+                                <option>Interior Designer</option>
+                                <option>Builder / Real Estate Developer</option>
+                                <option>Material Exhibitor</option>
+                                <option>General Attendee</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Message (Optional)</label>
+                            <textarea rows="3" placeholder="Tell us if you want to attend, exhibit or speak..." 
+                                      class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/20 transition-all duration-300 mt-2">
+                            Submit Form
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 py-16 border-t border-zinc-900 text-slate-400">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Branding & Logos -->
+                <div class="space-y-6 text-left">
+                    <div class="flex items-center gap-3">
+                        <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-12 w-auto object-contain">
+                        <span class="text-xl font-bold text-white tracking-wider">Edict Events</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Connecting global leaders through impactful virtual events, full outsourcing solutions, and legendary live experiences.
+                    </p>
+                    <div class="flex items-center gap-4 pt-2">
+                        <img src="GAIC 2026 W.png" alt="Global AI Confex Logo" class="h-10 w-auto opacity-80 hover:opacity-100 transition">
+                        <span class="text-xs text-zinc-500">Co-hosts of Global AI Confex</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Pages -->
+                <div class="text-left">
+                    <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Navigation</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="index.html" class="hover:text-indigo-400 transition-colors">Home Page</a></li>
+                        <li><a href="about.html" class="hover:text-indigo-400 transition-colors">About Us</a></li>
+                        <li><a href="outsource.html" class="hover:text-indigo-400 transition-colors">Outsource Services</a></li>
+                        <li><a href="upcoming.html" class="hover:text-indigo-400 transition-colors">Upcoming Events</a></li>
+                        <li><a href="past.html" class="hover:text-indigo-400 transition-colors">Past Events</a></li>
+                        <li><a href="sponsor.html" class="hover:text-indigo-400 transition-colors">Sponsor Us</a></li>
+                        <li><a href="contact.html" class="hover:text-indigo-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Event Verticals -->
+                <div class="text-left">
+                    <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Event Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="corporate-business-events.html#corporate" class="hover:text-indigo-400 transition-colors">Corporate & Business</a></li>
+                        <li><a href="private-social-events.html#private" class="hover:text-indigo-400 transition-colors">Private & Social</a></li>
+                        <li><a href="cultural-entertainment-events.html#cultural" class="hover:text-indigo-400 transition-colors">Cultural & Shows</a></li>
+                        <li><a href="sports-wellness-events.html#sports" class="hover:text-indigo-400 transition-colors">Sports & Wellness</a></li>
+                        <li><a href="charity-community-events.html#charity" class="hover:text-indigo-400 transition-colors">Charity & Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Socials -->
+                <div class="space-y-6 text-left">
+                    <div>
+                        <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Get In Touch</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2"><i class="fas fa-envelope text-indigo-400 text-xs"></i> info@edict-events.com</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-phone text-indigo-400 text-xs"></i> +91 7835080882</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400 text-xs"></i> Global Virtual Events</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-4">Follow Us</h4>
+                        <div class="flex gap-4 text-lg">
+                            <a href="https://www.linkedin.com/company/edictevents/?viewAsMember=true" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/share/1UDrvykxDM/" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/@edictevents" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/edictevents/" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-zinc-900/60 text-center text-xs text-zinc-500">
+                <p>&copy; 2026 Edict Events. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('interestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("✅ Thank you for your interest! The Edict Events coordinator will contact you shortly with the exhibition brochure and booking rates.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
