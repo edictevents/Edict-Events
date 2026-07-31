@@ -71,21 +71,50 @@
         .flip-card-front,
         .flip-card-back {
             position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
             border-radius: 1.75rem; /* 28px */
             overflow: hidden;
         }
 
         .flip-card-front {
             z-index: 2;
+            transform: rotateY(0deg);
         }
 
         .flip-card-back {
             transform: rotateY(180deg);
             z-index: 1;
+        }
+
+        /* PREVENT INVERTED/MIRRORED FRONT CONTENT FROM SHOWING ON FLIP */
+        .flip-card:hover .flip-card-front,
+        .flip-card-inner.is-flipped .flip-card-front {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease 0.15s, visibility 0s linear 0.4s;
+        }
+
+        .flip-card .flip-card-front {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.25s ease;
+        }
+
+        .flip-card:hover .flip-card-back,
+        .flip-card-inner.is-flipped .flip-card-back {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.25s ease 0.15s;
+        }
+
+        .flip-card .flip-card-back {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease;
         }
 
         /* Glassmorphism Panel Styles */
@@ -118,6 +147,7 @@
             background: #6366f1;
         }
     </style>
+    <link rel="stylesheet" href="cursor.css">
 </head>
 
 <body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
@@ -298,7 +328,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT OF CARD -->
-                        <div class="flip-card-front glass-panel border border-indigo-500/40 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-indigo-500/40 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="events_marketing.png" alt="Events Marketing" class="w-full h-full object-cover">
@@ -330,7 +360,7 @@
                         </div>
 
                         <!-- BACK OF CARD -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/80 border border-indigo-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-indigo-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
@@ -347,19 +377,23 @@
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-indigo-400 mt-1"></i>
-                                        <span>Multi-Channel Social Ad Campaigns</span>
+                                        <span>Multi-Channel Paid & Organic Ad Campaigns</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-indigo-400 mt-1"></i>
-                                        <span>Sponsor Pitch Deck Marketing & Speaker Outreach</span>
+                                        <span>Sponsor Pitch Deck Promotion & Speaker Recruitment</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-indigo-400 mt-1"></i>
-                                        <span>Registration Spikes & Analytics Tracking</span>
+                                        <span>Registration Funnel Optimization & Analytics</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-indigo-400 mt-1"></i>
+                                        <span>VIP Invitation Outreach & Pre-Event Buzz</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-indigo-900/30 border border-indigo-500/30 text-xs text-indigo-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-indigo-900/40 border border-indigo-500/30 text-xs text-indigo-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-chart-line text-indigo-400"></i> Proven Impact:</div>
                                     <p>+350% increase in delegate registrations for global summits.</p>
                                 </div>
@@ -381,7 +415,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT -->
-                        <div class="flip-card-front glass-panel border border-violet-500/30 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-violet-500/30 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="social_media_marketing.png" alt="Social Media Marketing" class="w-full h-full object-cover">
@@ -409,7 +443,7 @@
                         </div>
 
                         <!-- BACK -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-violet-950 to-slate-900 border border-violet-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-violet-950/80 border border-violet-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-violet-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
@@ -422,25 +456,29 @@
                                 <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-violet-400 mt-1"></i>
-                                        <span>Brand Strategy & Visual Design Assets</span>
+                                        <span>Brand Strategy & Custom Graphic Design Assets</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-violet-400 mt-1"></i>
-                                        <span>Conversion Copywriting & Publishing</span>
+                                        <span>Conversion Copywriting & Content Scheduling</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-violet-400 mt-1"></i>
-                                        <span>Executive Thought Leadership Management</span>
+                                        <span>Executive Thought Leadership & Profile Optimization</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-violet-400 mt-1"></i>
-                                        <span>Real-Time Engagement Data Analytics</span>
+                                        <span>Community Management & Audience Engagement</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-violet-400 mt-1"></i>
+                                        <span>Real-Time Engagement & Impression Data Analytics</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-violet-900/30 border border-violet-500/30 text-xs text-violet-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-violet-900/40 border border-violet-500/30 text-xs text-violet-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-chart-line text-violet-400"></i> Proven Impact:</div>
-                                    <p>5x increase in organic impressions across B2B profiles.</p>
+                                    <p>5x increase in organic impressions and engagement across B2B channels.</p>
                                 </div>
                             </div>
 
@@ -460,7 +498,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT -->
-                        <div class="flip-card-front glass-panel border border-fuchsia-500/30 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-fuchsia-500/30 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="web_development.png" alt="Web Development" class="w-full h-full object-cover">
@@ -488,7 +526,7 @@
                         </div>
 
                         <!-- BACK -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-fuchsia-950 to-slate-900 border border-fuchsia-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-fuchsia-950/80 border border-fuchsia-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-fuchsia-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
@@ -501,25 +539,29 @@
                                 <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-fuchsia-400 mt-1"></i>
-                                        <span>Custom Landing Pages & Event Portals</span>
+                                        <span>Custom Event Landing Pages & Interactive Portals</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-fuchsia-400 mt-1"></i>
-                                        <span>Mobile Responsive UI/UX Design</span>
+                                        <span>Mobile Responsive UI/UX Design & Dynamic Animations</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-fuchsia-400 mt-1"></i>
-                                        <span>SEO & High-Performance Code</span>
+                                        <span>Technical SEO, Fast Loading & High-Performance Code</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-fuchsia-400 mt-1"></i>
-                                        <span>Analytics & Lead Capture Integration</span>
+                                        <span>Ticket Registration, CRM & Lead Capture Forms</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-fuchsia-400 mt-1"></i>
+                                        <span>Secure Cloud Hosting & Ongoing Maintenance Support</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-fuchsia-900/30 border border-fuchsia-500/30 text-xs text-fuchsia-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-fuchsia-900/40 border border-fuchsia-500/30 text-xs text-fuchsia-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-tachometer-alt text-fuchsia-400"></i> Speed & Conversion:</div>
-                                    <p>Lightning-fast page load speeds under 1.2 seconds.</p>
+                                    <p>Page load speeds under 1.2s with 3x higher conversion boost.</p>
                                 </div>
                             </div>
 
@@ -539,7 +581,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT -->
-                        <div class="flip-card-front glass-panel border border-cyan-500/30 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-cyan-500/30 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="email_marketing.png" alt="Email Marketing" class="w-full h-full object-cover">
@@ -567,7 +609,7 @@
                         </div>
 
                         <!-- BACK -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-cyan-950 to-slate-900 border border-cyan-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/80 border border-cyan-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-cyan-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
@@ -580,23 +622,27 @@
                                 <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                        <span>Targeted List Building & Segmentation</span>
+                                        <span>Targeted B2B List Building & Data Hygiene</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                        <span>Cold Outreach & Nurture Copywriting</span>
+                                        <span>High-Converting Cold Outreach & Nurture Copywriting</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                        <span>Automated Drip Campaign Setup</span>
+                                        <span>Automated Drip Sequences & Follow-up Automation</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                        <span>Inbox Deliverability & Open Rate Tracking</span>
+                                        <span>Domain Protection & High Inbox Deliverability</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                        <span>Comprehensive Open Rate & Click Analytics</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-cyan-900/30 border border-cyan-500/30 text-xs text-cyan-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-cyan-900/40 border border-cyan-500/30 text-xs text-cyan-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-chart-bar text-cyan-400"></i> Open Rates:</div>
                                     <p>Consistently achieve 45%+ email open rates.</p>
                                 </div>
@@ -618,7 +664,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT -->
-                        <div class="flip-card-front glass-panel border border-pink-500/30 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-pink-500/30 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="client_acquisitions.png" alt="Client Acquisitions" class="w-full h-full object-cover">
@@ -646,7 +692,7 @@
                         </div>
 
                         <!-- BACK -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-pink-950 to-slate-900 border border-pink-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-pink-950/80 border border-pink-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-pink-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
@@ -659,25 +705,29 @@
                                 <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-pink-400 mt-1"></i>
-                                        <span>Target Persona & Lead Qualification</span>
+                                        <span>Target Persona Profiling & Lead Qualification</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-pink-400 mt-1"></i>
-                                        <span>Sponsor Pitch Package Distribution</span>
+                                        <span>Sponsor Pitch Package Creation & Distribution</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-pink-400 mt-1"></i>
-                                        <span>Predictable Meeting Booking Engine</span>
+                                        <span>Predictable Outbound Meeting Booking Engine</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-pink-400 mt-1"></i>
-                                        <span>High-Ticket Lead Closing Assistance</span>
+                                        <span>High-Ticket Corporate Sponsorship Closing</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-pink-400 mt-1"></i>
+                                        <span>Sales Pipeline Tracking & Lead Nurturing</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-pink-900/30 border border-pink-500/30 text-xs text-pink-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-pink-900/40 border border-pink-500/30 text-xs text-pink-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-dollar-sign text-pink-400"></i> Revenue Pipeline:</div>
-                                    <p>Build consistent pipeline of high-ticket B2B deals.</p>
+                                    <p>Build consistent pipeline of high-ticket B2B deals & sponsors.</p>
                                 </div>
                             </div>
 
@@ -697,7 +747,7 @@
                     <div class="flip-card-inner">
                         
                         <!-- FRONT -->
-                        <div class="flip-card-front glass-panel border border-sky-500/30 p-0 flex flex-col justify-between shadow-xl">
+                        <div class="flip-card-front bg-slate-900 border border-sky-500/30 p-0 flex flex-col justify-between shadow-xl">
                             <div>
                                 <div class="relative h-56 overflow-hidden bg-slate-950">
                                     <img src="linkedin_outreach.png" alt="LinkedIn Outreach Services" class="w-full h-full object-cover">
@@ -725,12 +775,12 @@
                         </div>
 
                         <!-- BACK -->
-                        <div class="flip-card-back bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 border border-sky-500/60 p-7 flex flex-col justify-between shadow-2xl">
+                        <div class="flip-card-back bg-slate-900 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/80 border border-sky-500/60 p-6 flex flex-col justify-between shadow-2xl">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center border-b border-sky-500/30 pb-3">
                                     <div class="flex items-center gap-2.5">
                                         <i class="fab fa-linkedin-in text-sky-400 text-xl"></i>
-                                        <h3 class="text-xl font-bold text-white">LinkedIn Outreach</h3>
+                                        <h3 class="text-xl font-bold text-white">LinkedIn B2B Outreach</h3>
                                     </div>
                                     <span class="text-xs bg-sky-500/20 text-sky-300 px-2.5 py-1 rounded-md font-semibold">Highlights</span>
                                 </div>
@@ -738,7 +788,7 @@
                                 <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-sky-400 mt-1"></i>
-                                        <span>Ideal Buyer Persona List Building</span>
+                                        <span>Ideal Buyer Persona & Executive Prospect Lists</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-sky-400 mt-1"></i>
@@ -746,17 +796,21 @@
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-sky-400 mt-1"></i>
-                                        <span>C-Level & Speaker Invitation Outreach</span>
+                                        <span>C-Level Executive & Speaker VIP Invitations</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check-circle text-sky-400 mt-1"></i>
-                                        <span>Direct Calendar Appointment Booking</span>
+                                        <span>Direct Calendar Appointment & Sales Booking</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-sky-400 mt-1"></i>
+                                        <span>Profile Authority & Network Growth Strategy</span>
                                     </li>
                                 </ul>
 
-                                <div class="p-3 rounded-xl bg-sky-900/30 border border-sky-500/30 text-xs text-sky-200 space-y-1">
+                                <div class="p-3 rounded-xl bg-sky-900/40 border border-sky-500/30 text-xs text-sky-200 space-y-1">
                                     <div class="font-bold flex items-center gap-1.5"><i class="fas fa-comments text-sky-400"></i> Response Rate:</div>
-                                    <p>High response rates from C-suite executive buyers.</p>
+                                    <p>35%+ positive response rates from executive decision-makers.</p>
                                 </div>
                             </div>
 
@@ -999,6 +1053,7 @@
             }
         }
     </script>
+    <script src="cursor.js"></script>
 </body>
 
 </html>
