@@ -1,0 +1,60 @@
+/* Custom Cursor Styles for Edict Events */
+
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, [role="button"], label, summary {
+    cursor: url('cursor_32.png') 4 0, auto;
+  }
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor select,
+body.has-custom-cursor textarea,
+body.has-custom-cursor [role="button"],
+body.has-custom-cursor label,
+body.has-custom-cursor summary {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 41px;
+  background-image: url('cursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 999999;
+  opacity: 0;
+  transition: opacity 0.25s ease, filter 0.2s ease;
+  will-change: transform;
+  filter: drop-shadow(0 3px 8px rgba(149, 0, 138, 0.45));
+}
+
+.custom-cursor.hover {
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 20px rgba(255, 0, 212, 0.6)) brightness(1.2);
+}
+
+.custom-cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999998;
+  border-radius: 50%;
+  animation: sparkle-fade 0.75s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 0.95;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.1) rotate(180deg);
+  }
+}
