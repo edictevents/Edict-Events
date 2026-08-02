@@ -1,35 +1,220 @@
-<!-- ==================== CONTACT FORM SECTION ==================== -->
-    <section id="contact" class="py-24 bg-white text-black border-t border-zinc-800 scroll-mt-24">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="heading-font text-5xl font-bold mb-4">Let's Start a Conversation</h2>
-                <p class="text-zinc-800 text-lg max-w-md mx-auto">Ready to host an event, speak, sponsor, or partner with us?</p>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Edict Events</title>
+    <meta name="description" content="Get in touch with Edict Events for event planning, sponsorship inquiries, speaking slots, and global confex partnerships.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Cursor Styles -->
+    <link rel="stylesheet" href="cursor.css">
+
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #3300fc 0%, #95008a 50%, #3300fc 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(129, 140, 248, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-950 text-zinc-100 overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-zinc-950/90 backdrop-blur-xl sticky top-0 z-50 border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-11 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="text-2xl font-extrabold tracking-tight text-white">Edict <span class="text-indigo-400">Events</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="about.html" class="nav-link text-zinc-300 hover:text-white transition-colors">About Us</a>
+
+                <!-- Event Services Dropdown -->
+                <div class="relative">
+                    <button onclick="toggleDropdown()" class="nav-link text-zinc-300 hover:text-white flex items-center gap-1.5 focus:outline-none py-2">
+                        Event Services
+                        <i id="chevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="servicesDropdown" class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-72 mt-2 z-50 border border-zinc-800">
+                        <a href="corporate-business-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Corporate & Business Events</a>
+                        <a href="private-social-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Private & Social Events</a>
+                        <a href="cultural-entertainment-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Cultural & Entertainment Events</a>
+                        <a href="sports-wellness-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Sports & Wellness Events</a>
+                        <a href="charity-community-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Charity & Community Events</a>
+                    </div>
+                </div>
+
+                <a href="outsource.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Outsource</a>
+
+                <!-- Events Dropdown -->
+                <div class="relative">
+                    <button onclick="toggleEventsDropdown()" class="nav-link text-zinc-300 hover:text-white flex items-center gap-1.5 focus:outline-none py-2">
+                        Events
+                        <i id="eventsChevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="eventsDropdown" class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-56 mt-2 z-50 border border-zinc-800">
+                        <a href="upcoming.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Upcoming Events</a>
+                        <a href="past.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Past Events</a>
+                    </div>
+                </div>
+
+                <a href="sponsor.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Sponsor Us</a>
+                <a href="contact.html" class="text-indigo-400 font-semibold border-b-2 border-indigo-400 py-1">Contact Us</a>
             </div>
 
-            <div class="bg-zinc-900 rounded-3xl p-8 md:p-10 border border-zinc-700 shadow-2xl">
-                <form id="contactForm" class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
+            <!-- Host CTA Button & Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-105 transition-all duration-300">
+                    <span>Host Your Event</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-300 hover:text-white text-xl p-2 focus:outline-none" aria-label="Toggle Navigation">
+                    <i id="mobileMenuIcon" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-zinc-900 border-b border-zinc-800 px-6 py-6 space-y-4">
+            <a href="about.html" class="block text-zinc-300 hover:text-white font-medium py-1">About Us</a>
+            <div class="border-t border-zinc-800/80 pt-3">
+                <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Event Services</span>
+                <div class="mt-2 space-y-2 pl-3">
+                    <a href="corporate-business-events.html" class="block text-zinc-400 hover:text-white">Corporate & Business Events</a>
+                    <a href="private-social-events.html" class="block text-zinc-400 hover:text-white">Private & Social Events</a>
+                    <a href="cultural-entertainment-events.html" class="block text-zinc-400 hover:text-white">Cultural & Entertainment Events</a>
+                    <a href="sports-wellness-events.html" class="block text-zinc-400 hover:text-white">Sports & Wellness Events</a>
+                    <a href="charity-community-events.html" class="block text-zinc-400 hover:text-white">Charity & Community Events</a>
+                </div>
+            </div>
+            <a href="outsource.html" class="block text-zinc-300 hover:text-white font-medium py-1">Outsource</a>
+            <a href="upcoming.html" class="block text-zinc-300 hover:text-white font-medium py-1">Upcoming Events</a>
+            <a href="past.html" class="block text-zinc-300 hover:text-white font-medium py-1">Past Events</a>
+            <a href="sponsor.html" class="block text-zinc-300 hover:text-white font-medium py-1">Sponsor Us</a>
+            <a href="contact.html" class="block text-white font-semibold py-1">Contact Us</a>
+            <a href="contact.html" class="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold mt-4">Host Your Event</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="relative py-24 overflow-hidden border-b border-zinc-900">
+        <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-1/4 translate-x-1/2 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wider uppercase mb-6">
+                <i class="fas fa-headset text-indigo-400"></i>
+                Global Event Concierge
+            </div>
+            <h1 class="heading-font text-5xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-8">
+                Get In <span class="gradient-text">Touch</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+                Whether you're looking to host an event, become a speaker, sponsor a confex, or explore outsourcing solutions, our executive directors are here to assist.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Contact Grid -->
+    <main class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid lg:grid-cols-12 gap-16 items-start">
+            
+            <!-- Left Column: Contact Form -->
+            <div class="lg:col-span-7 glass-card p-8 sm:p-10 rounded-3xl border border-zinc-800">
+                <h2 class="heading-font text-3xl font-bold text-white mb-2">Send Us a Message</h2>
+                <p class="text-sm text-zinc-400 mb-8">Fill out the form below and an Edict Events representative will connect with you within 24 hours.</p>
+
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm text-zinc-400 mb-2">Full Name <span style="color:#ef4444">*</span></label>
-                            <input type="text" required placeholder="John Doe" 
-                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Full Name <span class="text-rose-500">*</span></label>
+                            <input type="text" required placeholder="John Doe" class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none transition">
                         </div>
                         <div>
-                            <label class="block text-sm text-zinc-400 mb-2">Company</label>
-                            <input type="text" placeholder="Your Organization" 
-                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Company / Organization</label>
+                            <input type="text" placeholder="Acme Inc." class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none transition">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm text-zinc-400 mb-2">Email Address <span style="color:#ef4444">*</span></label>
-                        <input type="email" required placeholder="you@company.com" 
-                               class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Email Address <span class="text-rose-500">*</span></label>
+                            <input type="email" required placeholder="john@company.com" class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Phone Number</label>
+                            <input type="tel" placeholder="+91 7835080882" class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none transition">
+                        </div>
                     </div>
-
+                    
                     <div>
-                        <label class="block text-sm text-zinc-400 mb-2">Inquiry Type <span style="color:#ef4444">*</span></label>
-                        <select required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500">
+                        <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Inquiry Type <span class="text-rose-500">*</span></label>
+                        <select required class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-zinc-300 focus:outline-none transition">
                             <option value="">Select an option...</option>
                             <option value="host">Host / Organize an Event</option>
                             <option value="speak">Become a Speaker</option>
@@ -41,42 +226,199 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm text-zinc-400 mb-2">Message <span style="color:#ef4444">*</span></label>
-                        <textarea rows="6" required placeholder="Tell us more about your requirements..." 
-                                  class="w-full bg-zinc-400 border border-zinc-700 rounded-3xl px-6 py-5 focus:outline-none focus:border-purple-500 resize-none"></textarea>
+                        <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Your Message <span class="text-rose-500">*</span></label>
+                        <textarea rows="5" required placeholder="Describe your event requirements or question..." class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none transition resize-none"></textarea>
                     </div>
-
-                    <button type="submit" 
-                            class="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white py-6 rounded-3xl text-xl font-semibold hover:shadow-xl transition-all hover:scale-[1.02]">
+                    
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-4 rounded-xl shadow-xl shadow-indigo-600/30 hover:scale-[1.01] transition-all duration-300 text-base">
                         Send Message
                     </button>
                 </form>
             </div>
 
-            <p class="text-center text-zinc-500 mt-10">
-                Or email us directly: <strong>info@edict-events.com</strong>
-            </p>
+            <!-- Right Column: Contact Details & Map -->
+            <div class="lg:col-span-5 space-y-8">
+                
+                <!-- Direct Details Card -->
+                <div class="glass-card p-8 rounded-3xl border border-zinc-800 space-y-6">
+                    <h3 class="heading-font text-2xl font-bold text-white">Direct Contacts</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-zinc-400 uppercase font-semibold">Email Us</p>
+                                <a href="mailto:info@edict-events.com" class="text-base text-white font-semibold hover:text-indigo-400 transition">info@edict-events.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-zinc-400 uppercase font-semibold">Call Hotline</p>
+                                <a href="tel:+917835080882" class="text-base text-white font-semibold hover:text-indigo-400 transition">+91 7835080882</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-xl shrink-0">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-zinc-400 uppercase font-semibold">Global Headquarters</p>
+                                <p class="text-sm text-zinc-300">Global Virtual & On-Site Operations<br>India | USA | Europe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div class="glass-card p-3 rounded-3xl overflow-hidden border border-zinc-800">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.057!2d77.209!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM2JzUwLjAiTiA3N8KwMTInMzIuNCJF!5e0!3m2!1sen!2sin!4v1690000000000" 
+                            width="100%" height="320" style="border:0; border-radius: 1.25rem;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
-    </section>
-<section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 py-16 border-t border-zinc-900 text-slate-400">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="space-y-6 text-left">
+                    <div class="flex items-center gap-3">
+                        <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-12 w-auto object-contain">
+                        <span class="text-xl font-bold text-white tracking-wider">Edict Events</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Connecting global leaders through impactful virtual events, full outsourcing solutions, and legendary live experiences.
+                    </p>
+                    <div class="flex items-center gap-4 pt-2">
+                        <img src="GAIC 2026 W.png" alt="Global AI Confex Logo" class="h-10 w-auto opacity-80 hover:opacity-100 transition">
+                        <span class="text-xs text-zinc-500">Co-hosts of Global AI Confex</span>
+                    </div>
+                </div>
+
+                <div class="text-left">
+                    <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Navigation</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="index.html" class="hover:text-indigo-400 transition-colors">Home Page</a></li>
+                        <li><a href="about.html" class="hover:text-indigo-400 transition-colors">About Us</a></li>
+                        <li><a href="outsource.html" class="hover:text-indigo-400 transition-colors">Outsource Services</a></li>
+                        <li><a href="upcoming.html" class="hover:text-indigo-400 transition-colors">Upcoming Events</a></li>
+                        <li><a href="past.html" class="hover:text-indigo-400 transition-colors">Past Events</a></li>
+                        <li><a href="sponsor.html" class="hover:text-indigo-400 transition-colors">Sponsor Us</a></li>
+                        <li><a href="contact.html" class="text-indigo-400 font-semibold">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="text-left">
+                    <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Event Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="corporate-business-events.html" class="hover:text-indigo-400 transition-colors">Corporate & Business</a></li>
+                        <li><a href="private-social-events.html" class="hover:text-indigo-400 transition-colors">Private & Social</a></li>
+                        <li><a href="cultural-entertainment-events.html" class="hover:text-indigo-400 transition-colors">Cultural & Shows</a></li>
+                        <li><a href="sports-wellness-events.html" class="hover:text-indigo-400 transition-colors">Sports & Wellness</a></li>
+                        <li><a href="charity-community-events.html" class="hover:text-indigo-400 transition-colors">Charity & Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6 text-left">
+                    <div>
+                        <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Get In Touch</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2"><i class="fas fa-envelope text-indigo-400 text-xs"></i> info@edict-events.com</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-phone text-indigo-400 text-xs"></i> +91 7835080882</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400 text-xs"></i> Global Virtual & On-Site Events</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-4">Follow Us</h4>
+                        <div class="flex gap-4 text-lg">
+                            <a href="https://www.linkedin.com/company/edictevents/?viewAsMember=true" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/share/1UDrvykxDM/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/@edictevents" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/edictevents/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-zinc-900/60 text-center text-xs text-zinc-500">
+                <p>&copy; 2026 Edict Events. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Animated Dual Cursor Script -->
+    <script src="cursor.js"></script>
+
+    <!-- Navigation Interactivity Scripts -->
     <script>
-        // Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("✅ Thank you! Your message has been received. We'll get back to you soon.");
-            this.reset();
+        function toggleDropdown() {
+            const dropdown = document.getElementById('servicesDropdown');
+            const chevron = document.getElementById('chevron');
+            dropdown.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+            const eventsDropdown = document.getElementById('eventsDropdown');
+            const eventsChevron = document.getElementById('eventsChevron');
+            if (eventsDropdown && !eventsDropdown.classList.contains('hidden')) {
+                eventsDropdown.classList.add('hidden');
+                eventsChevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleEventsDropdown() {
+            const dropdown = document.getElementById('eventsDropdown');
+            const chevron = document.getElementById('chevron');
+            dropdown.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+            const servicesDropdown = document.getElementById('servicesDropdown');
+            const servicesChevron = document.getElementById('chevron');
+            if (servicesDropdown && !servicesDropdown.classList.contains('hidden')) {
+                servicesDropdown.classList.add('hidden');
+                servicesChevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars';
+            } else {
+                icon.className = 'fas fa-times';
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            const relativeContainers = e.target.closest('.relative');
+            if (!relativeContainers) {
+                const servicesDropdown = document.getElementById('servicesDropdown');
+                const servicesChevron = document.getElementById('chevron');
+                const eventsDropdown = document.getElementById('eventsDropdown');
+                const eventsChevron = document.getElementById('eventsChevron');
+
+                if (servicesDropdown && !servicesDropdown.classList.contains('hidden')) {
+                    servicesDropdown.classList.add('hidden');
+                    if (servicesChevron) servicesChevron.classList.remove('rotate-180');
+                }
+                if (eventsDropdown && !eventsDropdown.classList.contains('hidden')) {
+                    eventsDropdown.classList.add('hidden');
+                    if (eventsChevron) eventsChevron.classList.remove('rotate-180');
+                }
+            }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href').length > 1) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("✅ Thank you! Your message has been received by Edict Events. Our team will contact you shortly.");
+            this.reset();
         });
     </script>
-</section>
+</body>
+
+</html>
