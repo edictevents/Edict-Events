@@ -179,75 +179,76 @@
   </script>
 
   <!-- Navbar -->
-  <nav class="gradient-bg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-1">
-        <div class="w-25 h-25 flex items-center justify-center">
-          <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-12 w-auto object-contain">
-        </div>
-        <span class="text-2xl font-bold tracking-tight">Edict Events</span>
-      </div>
+  <nav class="bg-zinc-950/90 backdrop-blur-xl sticky top-0 z-50 border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo"
+          class="h-11 w-auto object-contain transition-transform group-hover:scale-105">
+        <span class="text-2xl font-extrabold tracking-tight text-white">Edict <span
+            class="text-indigo-400">Events</span></span>
+      </a>
 
       <!-- Desktop Links -->
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="about.html" class="nav-link">About Us</a>
+        <a href="about.html" class="nav-link text-zinc-300 hover:text-white transition-colors">About Us</a>
 
-        <!-- Clickable Services Dropdown -->
+        <!-- Event Services Dropdown -->
         <div class="relative">
-          <button onclick="toggleDropdown()" class="nav-link flex items-center gap-1 focus:outline-none">
-            Types of Events
-            <i id="chevron" class="fas fa-chevron-down text-xs transition-transform"></i>
+          <button onclick="toggleDropdown()"
+            class="nav-link text-zinc-300 hover:text-white flex items-center gap-1.5 focus:outline-none py-2">
+            Event Services
+            <i id="chevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
           </button>
 
           <!-- Dropdown Menu -->
           <div id="servicesDropdown"
-            class="hidden absolute bg-black text-white rounded-2xl shadow-2xl py-4 w-72 mt-3 z-50 border border-black">
-            <a href="corporate-business-events.html#corporate"
-              class="block px-6 py-3 hover:bg-zinc-600 transition">Corporate & Business Events</a>
-            <a href="private-social-events.html#private" class="block px-6 py-3 hover:bg-zinc-600 transition">Private &
-              Social Events</a>
-            <a href="cultural-entertainment-events.html#cultural"
-              class="block px-6 py-3 hover:bg-zinc-600 transition">Cultural & Entertainment Events</a>
-            <a href="sports-wellness-events.html#sports" class="block px-6 py-3 hover:bg-zinc-600 transition">Sports &
-              Wellness Events</a>
-            <a href="charity-community-events.html#charity" class="block px-6 py-3 hover:bg-zinc-600 transition">Charity
-              & Community Events</a>
+            class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-72 mt-2 z-50 border border-zinc-800">
+            <a href="corporate-business-events.html"
+              class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Corporate & Business Events</a>
+            <a href="private-social-events.html"
+              class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Private & Social Events</a>
+            <a href="cultural-entertainment-events.html"
+              class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Cultural & Entertainment
+              Events</a>
+            <a href="sports-wellness-events.html"
+              class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Sports & Wellness Events</a>
+            <a href="charity-community-events.html"
+              class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Charity & Community Events</a>
           </div>
         </div>
 
-        <a href="outsource.html" class="nav-link">Outsource</a>
+        <a href="outsource.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Outsource</a>
 
         <!-- Events Dropdown -->
         <div class="relative">
-          <button onclick="toggleEventsDropdown()" class="nav-link flex items-center gap-1 focus:outline-none">
+          <button onclick="toggleEventsDropdown()"
+            class="nav-link text-zinc-300 hover:text-white flex items-center gap-1.5 focus:outline-none py-2">
             Events
-            <i id="eventsChevron" class="fas fa-chevron-down text-xs transition-transform"></i>
+            <i id="eventsChevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
           </button>
           <div id="eventsDropdown"
-            class="hidden absolute bg-black text-white rounded-2xl shadow-2xl py-4 w-56 mt-3 z-50 border border-black">
-            <a href="upcoming.html" class="block px-6 py-3 hover:bg-zinc-600 transition">Upcoming Events</a>
-            <a href="past.html" class="block px-6 py-3 hover:bg-zinc-600 transition">Past Events</a>
+            class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-56 mt-2 z-50 border border-zinc-800">
+            <a href="upcoming.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Upcoming
+              Events</a>
+            <a href="past.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Past Events</a>
           </div>
         </div>
 
-        <a href="sponsor.html" class="nav-link">Sponsor Us</a>
-        <a href="contact.html" class="nav-link">Contact Us</a>
+        <a href="sponsor.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Sponsor Us</a>
+        <a href="contact.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Contact Us</a>
       </div>
 
       <!-- Desktop Host Button -->
-      <a href="contact.html"
-        class="hidden md:block bg-white text-indigo-700 px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-indigo-100 transition-colors">
-        Host Your Event
-      </a>
-
-      <!-- Mobile menu trigger & Host Button -->
-      <div class="flex items-center space-x-3 md:hidden">
+      <div class="flex items-center gap-4">
         <a href="contact.html"
-          class="bg-white text-indigo-700 px-4 py-2 rounded-xl font-semibold text-xs hover:bg-indigo-100 transition-colors">
-          Host Event
+          class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-105 transition-all duration-300">
+          <span>Host Your Event</span>
+          <i class="fas fa-arrow-right text-xs"></i>
         </a>
-        <button id="mobile-menu-btn" class="text-white text-xl p-2 focus:outline-none" onclick="toggleMobileMenu()"
-          aria-label="Toggle Navigation">
+
+        <!-- Mobile menu trigger -->
+        <button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white text-xl p-2 focus:outline-none"
+          onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
           <i id="mobile-menu-icon" class="fas fa-bars"></i>
         </button>
       </div>
@@ -261,11 +262,11 @@
       <a href="about.html" class="hover:text-indigo-400 transition-colors py-2 border-b border-zinc-800"
         onclick="toggleMobileMenu()">About Us</a>
 
-      <!-- Mobile Collapsible Types of Events -->
+      <!-- Mobile Collapsible Event Services -->
       <div class="flex flex-col py-2 border-b border-zinc-800">
         <button onclick="toggleMobileEventsDropdown()"
           class="flex justify-between items-center w-full text-left font-medium hover:text-indigo-400 transition-colors">
-          Types of Events
+          Event Services
           <i id="mobile-chevron" class="fas fa-chevron-down text-xs transition-transform"></i>
         </button>
         <div id="mobileServicesDropdown" class="hidden flex flex-col space-y-3 mt-3 pl-4 text-sm text-zinc-400">
@@ -480,7 +481,7 @@
     <div id="hero-bg-3" class="absolute inset-0 transition-opacity duration-[2500ms] opacity-0 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35 z-10"></div>
       <div class="absolute inset-0 bg-cover bg-center animate-ken-burns scale-100"
-        style="background-image: url('cultural festivals.png');">
+        style="background-image: url('music and live performances.jpg');">
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
           <source
             src="https://assets.mixkit.co/videos/preview/mixkit-concert-crowd-in-front-of-a-bright-stage-41977-large.mp4"
@@ -497,7 +498,7 @@
     <div class="absolute inset-0 bg-[radial-gradient(at_center,#ffffff05_0%,transparent_70%)] z-10"></div>
 
     <div
-      class="max-w-7xl mx-auto px-6 pt-28 pb-16 relative z-20 w-full flex flex-col justify-between min-h-[75vh] md:min-h-[80vh]">
+      class="max-w-7xl mx-auto px-6 pt-10 pb-16 relative z-20 w-full flex flex-col justify-between min-h-[75vh] md:min-h-[80vh]">
 
       <div class="flex-grow flex items-center">
         <div class="w-full">
