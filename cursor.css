@@ -1,49 +1,70 @@
 /* Custom Cursor Styles for Edict Events */
 
-@media (pointer: fine) {
-  body, a, button, input, select, textarea, [role="button"], label, summary {
-    cursor: url('CURSOR.png') 4 0, auto;
+@media (pointer: fine), (hover: hover) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor select,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor label,
+  body.has-custom-cursor summary,
+  body.has-custom-cursor .flip-card {
+    cursor: none !important;
   }
 }
 
-body.has-custom-cursor,
-body.has-custom-cursor a,
-body.has-custom-cursor button,
-body.has-custom-cursor input,
-body.has-custom-cursor select,
-body.has-custom-cursor textarea,
-body.has-custom-cursor [role="button"],
-body.has-custom-cursor label,
-body.has-custom-cursor summary {
-  cursor: none !important;
-}
-
-.custom-cursor {
+.custom-cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 41px;
-  background-image: url('cursor.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 10px;
+  height: 10px;
+  background: #00f0ff;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 999999;
   opacity: 0;
-  transition: opacity 0.25s ease, filter 0.2s ease;
+  box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00d4;
+  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
   will-change: transform;
-  filter: drop-shadow(0 3px 8px rgba(149, 0, 138, 0.45));
 }
 
-.custom-cursor.hover {
-  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 20px rgba(255, 0, 212, 0.6)) brightness(1.2);
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(0, 240, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  opacity: 0;
+  box-shadow: 0 0 15px rgba(149, 0, 138, 0.3);
+  transition: opacity 0.2s ease, width 0.25s cubic-bezier(0.25, 1, 0.5, 1), height 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s ease, background-color 0.25s ease;
+  will-change: transform;
+}
+
+.custom-cursor-dot.hover {
+  transform: scale(1.8);
+  background: #ff00d4;
+  box-shadow: 0 0 15px #ff00d4, 0 0 25px #3300fc;
+}
+
+.custom-cursor-ring.hover {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(255, 0, 212, 0.85);
+  background: rgba(255, 0, 212, 0.08);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
 }
 
 .custom-cursor-sparkle {
   position: fixed;
   pointer-events: none;
-  z-index: 999998;
+  z-index: 999997;
   border-radius: 50%;
   animation: sparkle-fade 0.75s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
