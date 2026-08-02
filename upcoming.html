@@ -1,58 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Events - Edict Events</title>
+    <title>Upcoming Events | Edict Events</title>
+    <meta name="description" content="Explore premier upcoming corporate exhibitions, architectural expos, and virtual summits by Edict Events.">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome 6.5.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Cursor Styles -->
+    <link rel="stylesheet" href="cursor.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .heading-font { font-family: 'Playfair Display', sans-serif; }
-        
-        .gradient-glow {
-            box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.15);
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-        .card-glow:hover {
-            box-shadow: 0 0 40px -5px rgba(139, 92, 246, 0.3);
-            border-color: rgba(167, 139, 250, 0.4);
-            transform: translateY(-4px);
+
+        .heading-font {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #3300fc 0%, #95008a 50%, #3300fc 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(129, 140, 248, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
         }
     </style>
-    <link rel="stylesheet" href="cursor.css">
 </head>
-<body class="bg-zinc-950 text-slate-100">
+
+<body class="bg-zinc-950 text-zinc-100 overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
     <!-- Navbar -->
-    <nav class="bg-black sticky top-0 z-50 border-b border-zinc-900">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Logo" class="h-10">
-                <span class="text-2xl font-bold tracking-wider text-white">Edict Events</span>
-            </div>
-            <a href="index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 font-medium transition text-sm">
-                <i class="fas fa-arrow-left"></i> Back to Home
+    <nav class="bg-zinc-950/90 backdrop-blur-xl sticky top-0 z-50 border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-11 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="text-2xl font-extrabold tracking-tight text-white">Edict <span class="text-indigo-400">Events</span></span>
             </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="about.html" class="nav-link text-zinc-300 hover:text-white transition-colors">About Us</a>
+
+                <!-- Event Services Dropdown -->
+                <div class="relative">
+                    <button onclick="toggleDropdown()" class="nav-link text-zinc-300 hover:text-white flex items-center gap-1.5 focus:outline-none py-2">
+                        Event Services
+                        <i id="chevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="servicesDropdown" class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-72 mt-2 z-50 border border-zinc-800">
+                        <a href="corporate-business-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Corporate & Business Events</a>
+                        <a href="private-social-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Private & Social Events</a>
+                        <a href="cultural-entertainment-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Cultural & Entertainment Events</a>
+                        <a href="sports-wellness-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Sports & Wellness Events</a>
+                        <a href="charity-community-events.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Charity & Community Events</a>
+                    </div>
+                </div>
+
+                <a href="outsource.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Outsource</a>
+
+                <!-- Events Dropdown -->
+                <div class="relative">
+                    <button onclick="toggleEventsDropdown()" class="text-indigo-400 font-semibold border-b-2 border-indigo-400 flex items-center gap-1.5 focus:outline-none py-1">
+                        Events
+                        <i id="eventsChevron" class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="eventsDropdown" class="hidden absolute top-full left-0 bg-zinc-900 text-zinc-200 rounded-2xl shadow-2xl py-3 w-56 mt-2 z-50 border border-zinc-800">
+                        <a href="upcoming.html" class="block px-5 py-2.5 bg-indigo-600/20 text-indigo-300 font-semibold border-l-4 border-indigo-500">Upcoming Events</a>
+                        <a href="past.html" class="block px-5 py-2.5 hover:bg-zinc-800 hover:text-white transition">Past Events</a>
+                    </div>
+                </div>
+
+                <a href="sponsor.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Sponsor Us</a>
+                <a href="contact.html" class="nav-link text-zinc-300 hover:text-white transition-colors">Contact Us</a>
+            </div>
+
+            <!-- Host CTA Button & Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-105 transition-all duration-300">
+                    <span>Host Your Event</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-300 hover:text-white text-xl p-2 focus:outline-none" aria-label="Toggle Navigation">
+                    <i id="mobileMenuIcon" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-zinc-900 border-b border-zinc-800 px-6 py-6 space-y-4">
+            <a href="about.html" class="block text-zinc-300 hover:text-white font-medium py-1">About Us</a>
+            <div class="border-t border-zinc-800/80 pt-3">
+                <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Event Services</span>
+                <div class="mt-2 space-y-2 pl-3">
+                    <a href="corporate-business-events.html" class="block text-zinc-400 hover:text-white">Corporate & Business Events</a>
+                    <a href="private-social-events.html" class="block text-zinc-400 hover:text-white">Private & Social Events</a>
+                    <a href="cultural-entertainment-events.html" class="block text-zinc-400 hover:text-white">Cultural & Entertainment Events</a>
+                    <a href="sports-wellness-events.html" class="block text-zinc-400 hover:text-white">Sports & Wellness Events</a>
+                    <a href="charity-community-events.html" class="block text-zinc-400 hover:text-white">Charity & Community Events</a>
+                </div>
+            </div>
+            <a href="outsource.html" class="block text-zinc-300 hover:text-white font-medium py-1">Outsource</a>
+            <a href="upcoming.html" class="block text-white font-semibold py-1">Upcoming Events</a>
+            <a href="past.html" class="block text-zinc-300 hover:text-white font-medium py-1">Past Events</a>
+            <a href="sponsor.html" class="block text-zinc-300 hover:text-white font-medium py-1">Sponsor Us</a>
+            <a href="contact.html" class="block text-zinc-300 hover:text-white font-medium py-1">Contact Us</a>
+            <a href="contact.html" class="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold mt-4">Host Your Event</a>
         </div>
     </nav>
 
     <!-- Header Section -->
-    <header class="relative py-24 overflow-hidden border-b border-zinc-900 bg-gradient-to-b from-zinc-950 via-zinc-900/30 to-zinc-950">
-        <!-- Floating Ambient Glows -->
-        <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <header class="relative py-24 overflow-hidden border-b border-zinc-900">
+        <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-10 right-1/4 translate-x-1/2 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-semibold tracking-wider uppercase mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wider uppercase mb-6">
                 <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                Next Showcase
+                Next Showcase & Summit
             </div>
             <h1 class="heading-font text-5xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-8">
-                Upcoming Events
+                Upcoming <span class="gradient-text">Events</span>
             </h1>
             <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                Empowering industries, designers, and builders. Explore our premier schedule of upcoming physical exhibitions, virtual webinars, and summits.
+                Empowering industries, developers, architects, and business leaders. Explore our premier schedule of upcoming physical exhibitions, virtual webinars, and global summits.
             </p>
         </div>
     </header>
@@ -64,30 +187,29 @@
             <!-- Left Column: Details & Schedule -->
             <div class="lg:col-span-8 space-y-12">
                 
-                <!-- Main Header & Image Banner -->
-                <div class="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-900">
+                <div class="glass-card rounded-3xl p-8 border border-zinc-800">
                     <div class="relative rounded-2xl overflow-hidden aspect-[16/9] mb-8">
                         <img src="upcoming events INTERIAEXPO 2026.png" alt="INTERIAEXPO 2026 Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
-                            <span class="bg-violet-600 text-white text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-wider">
+                            <span class="bg-indigo-600 text-white text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-wider shadow">
                                 Featured Exhibition
                             </span>
                         </div>
                     </div>
 
-                    <h2 class="heading-font text-4xl font-bold text-white mb-6">
+                    <h2 class="heading-font text-3xl sm:text-4xl font-bold text-white mb-6">
                         INTERIAEXPO 2026
                     </h2>
                     
-                    <p class="text-zinc-300 text-lg leading-relaxed mb-8">
+                    <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-8">
                         INTERIAEXPO is North India's premier B2B expo showcasing the best innovations in interior styling, architectural layouts, sustainable exterior finishes, and smart home automation. Building a community of top developers, architects, and designers to share state-of-the-art products.
                     </p>
 
                     <!-- Key Pillars -->
                     <div class="grid sm:grid-cols-3 gap-6">
                         <div class="bg-zinc-900/80 p-6 rounded-2xl border border-zinc-800">
-                            <i class="fas fa-couch text-2xl text-violet-400 mb-4"></i>
+                            <i class="fas fa-couch text-2xl text-purple-400 mb-4"></i>
                             <h4 class="font-semibold text-white mb-2">Modern Interiors</h4>
                             <p class="text-xs text-zinc-400">Contemporary concepts and functional modular layouts.</p>
                         </div>
@@ -109,8 +231,8 @@
                     <h3 class="heading-font text-3xl font-bold text-white">Event Schedule</h3>
                     
                     <!-- Day 1 -->
-                    <div class="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-8 space-y-6">
-                        <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4">
+                    <div class="glass-card rounded-3xl p-8 space-y-6">
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
                             <span class="text-lg font-bold text-indigo-400">DAY 01</span>
                             <span class="text-sm text-zinc-400 font-medium">Inauguration & Visionary Panels</span>
                         </div>
@@ -141,8 +263,8 @@
                     </div>
 
                     <!-- Day 2 -->
-                    <div class="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-8 space-y-6">
-                        <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4">
+                    <div class="glass-card rounded-3xl p-8 space-y-6">
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
                             <span class="text-lg font-bold text-indigo-400">DAY 02</span>
                             <span class="text-sm text-zinc-400 font-medium">Workshops & Collaboration</span>
                         </div>
@@ -158,7 +280,7 @@
                             <div class="flex gap-6 items-start">
                                 <div class="text-sm text-indigo-300 font-semibold w-24 shrink-0 pt-0.5">02:00 PM</div>
                                 <div>
-                                    <h4 class="font-semibold text-white">Collaborative Procurement in India's Real Estate</h4>
+                                    <h4 class="font-semibold text-white">Collaborative Procurement in Real Estate</h4>
                                     <p class="text-sm text-zinc-400 mt-1">Streamlining raw material sourcing pipelines for commercial infrastructure.</p>
                                 </div>
                             </div>
@@ -177,34 +299,33 @@
             <!-- Right Column: Registration Form & Fast Facts -->
             <div class="lg:col-span-4 space-y-8 lg:sticky lg:top-28">
                 
-                <!-- Quick Info Box -->
-                <div class="bg-zinc-900/60 border border-zinc-900 rounded-3xl p-8 space-y-6">
+                <div class="glass-card rounded-3xl p-8 space-y-6">
                     <h4 class="heading-font text-xl font-bold text-white">Event Details</h4>
                     
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-center gap-3">
-                            <i class="far fa-calendar-alt text-violet-400 w-5"></i>
+                            <i class="far fa-calendar-alt text-indigo-400 w-5"></i>
                             <div>
                                 <p class="text-xs text-zinc-500 font-semibold">DATE</p>
                                 <p class="text-zinc-300 font-medium">To Be Announced (2026)</p>
                             </div>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fas fa-map-marker-alt text-violet-400 w-5"></i>
+                            <i class="fas fa-map-marker-alt text-indigo-400 w-5"></i>
                             <div>
                                 <p class="text-xs text-zinc-500 font-semibold">VENUE</p>
                                 <p class="text-zinc-300 font-medium">Pragati Maidan, New Delhi</p>
                             </div>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fas fa-user-friends text-violet-400 w-5"></i>
+                            <i class="fas fa-user-friends text-indigo-400 w-5"></i>
                             <div>
                                 <p class="text-xs text-zinc-500 font-semibold">AUDIENCE</p>
                                 <p class="text-zinc-300 font-medium">Architects, Builders, Designers</p>
                             </div>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fas fa-building text-violet-400 w-5"></i>
+                            <i class="fas fa-building text-indigo-400 w-5"></i>
                             <div>
                                 <p class="text-xs text-zinc-500 font-semibold">EXHIBITORS</p>
                                 <p class="text-zinc-300 font-medium">150+ Leading Brands Expected</p>
@@ -214,26 +335,22 @@
                 </div>
 
                 <!-- Registration Form Card -->
-                <div class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-violet-600/10 rounded-full blur-2xl"></div>
-                    
+                <div class="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden">
                     <h4 class="heading-font text-2xl font-bold text-white mb-2">Register Interest</h4>
                     <p class="text-xs text-zinc-400 mb-6">Stay informed on ticket releases, speaker line-ups, and booking spaces.</p>
                     
                     <form id="interestForm" class="space-y-4">
                         <div>
                             <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Your Name</label>
-                            <input type="text" required placeholder="John Doe" 
-                                   class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
+                            <input type="text" required placeholder="John Doe" class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Email Address</label>
-                            <input type="email" required placeholder="john@example.com" 
-                                   class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
+                            <input type="email" required placeholder="john@example.com" class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Professional Role</label>
-                            <select class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-zinc-300 focus:outline-none transition">
+                            <select class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-4 py-3 text-sm text-zinc-300 focus:outline-none transition">
                                 <option>Architect / Spatial Planner</option>
                                 <option>Interior Designer</option>
                                 <option>Builder / Real Estate Developer</option>
@@ -243,18 +360,16 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Message (Optional)</label>
-                            <textarea rows="3" placeholder="Tell us if you want to attend, exhibit or speak..." 
-                                      class="w-full bg-zinc-950 border border-zinc-800 focus:border-violet-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition"></textarea>
+                            <textarea rows="3" placeholder="Tell us if you want to attend, exhibit or speak..." class="w-full bg-zinc-950 border border-zinc-800 focus:border-indigo-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition"></textarea>
                         </div>
                         
-                        <button type="submit" 
-                                class="w-full py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/20 transition-all duration-300 mt-2">
-                            Submit Form
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-indigo-600/30 transition duration-300 text-sm">
+                            Submit Registration
                         </button>
                     </form>
                 </div>
-            </div>
 
+            </div>
         </div>
     </main>
 
@@ -262,7 +377,6 @@
     <footer class="bg-zinc-950 py-16 border-t border-zinc-900 text-slate-400">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <!-- Branding & Logos -->
                 <div class="space-y-6 text-left">
                     <div class="flex items-center gap-3">
                         <img src="EDICT EVENTS WHITE LOGO FOR BLACK.png" alt="Edict Events Logo" class="h-12 w-auto object-contain">
@@ -277,49 +391,46 @@
                     </div>
                 </div>
 
-                <!-- Navigation Pages -->
                 <div class="text-left">
                     <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Navigation</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="index.html" class="hover:text-indigo-400 transition-colors">Home Page</a></li>
                         <li><a href="about.html" class="hover:text-indigo-400 transition-colors">About Us</a></li>
                         <li><a href="outsource.html" class="hover:text-indigo-400 transition-colors">Outsource Services</a></li>
-                        <li><a href="upcoming.html" class="hover:text-indigo-400 transition-colors">Upcoming Events</a></li>
+                        <li><a href="upcoming.html" class="text-indigo-400 font-semibold">Upcoming Events</a></li>
                         <li><a href="past.html" class="hover:text-indigo-400 transition-colors">Past Events</a></li>
                         <li><a href="sponsor.html" class="hover:text-indigo-400 transition-colors">Sponsor Us</a></li>
                         <li><a href="contact.html" class="hover:text-indigo-400 transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <!-- Event Verticals -->
                 <div class="text-left">
                     <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Event Services</h4>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="corporate-business-events.html#corporate" class="hover:text-indigo-400 transition-colors">Corporate & Business</a></li>
-                        <li><a href="private-social-events.html#private" class="hover:text-indigo-400 transition-colors">Private & Social</a></li>
-                        <li><a href="cultural-entertainment-events.html#cultural" class="hover:text-indigo-400 transition-colors">Cultural & Shows</a></li>
-                        <li><a href="sports-wellness-events.html#sports" class="hover:text-indigo-400 transition-colors">Sports & Wellness</a></li>
-                        <li><a href="charity-community-events.html#charity" class="hover:text-indigo-400 transition-colors">Charity & Community</a></li>
+                        <li><a href="corporate-business-events.html" class="hover:text-indigo-400 transition-colors">Corporate & Business</a></li>
+                        <li><a href="private-social-events.html" class="hover:text-indigo-400 transition-colors">Private & Social</a></li>
+                        <li><a href="cultural-entertainment-events.html" class="hover:text-indigo-400 transition-colors">Cultural & Shows</a></li>
+                        <li><a href="sports-wellness-events.html" class="hover:text-indigo-400 transition-colors">Sports & Wellness</a></li>
+                        <li><a href="charity-community-events.html" class="hover:text-indigo-400 transition-colors">Charity & Community</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact & Socials -->
                 <div class="space-y-6 text-left">
                     <div>
                         <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-6">Get In Touch</h4>
                         <ul class="space-y-2 text-sm">
                             <li class="flex items-center gap-2"><i class="fas fa-envelope text-indigo-400 text-xs"></i> info@edict-events.com</li>
                             <li class="flex items-center gap-2"><i class="fas fa-phone text-indigo-400 text-xs"></i> +91 7835080882</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400 text-xs"></i> Global Virtual Events</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400 text-xs"></i> Global Virtual & On-Site Events</li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-white font-semibold tracking-wider uppercase text-xs mb-4">Follow Us</h4>
                         <div class="flex gap-4 text-lg">
-                            <a href="https://www.linkedin.com/company/edictevents/?viewAsMember=true" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.facebook.com/share/1UDrvykxDM/" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.youtube.com/@edictevents" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.instagram.com/edictevents/" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/edictevents/?viewAsMember=true" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/share/1UDrvykxDM/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/@edictevents" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/edictevents/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -330,13 +441,67 @@
         </div>
     </footer>
 
+    <!-- Custom Animated Dual Cursor Script -->
+    <script src="cursor.js"></script>
+
+    <!-- Navigation Interactivity Scripts -->
     <script>
-        document.getElementById('interestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("✅ Thank you for your interest! The Edict Events coordinator will contact you shortly with the exhibition brochure and booking rates.");
-            this.reset();
+        function toggleDropdown() {
+            const dropdown = document.getElementById('servicesDropdown');
+            const chevron = document.getElementById('chevron');
+            dropdown.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+            const eventsDropdown = document.getElementById('eventsDropdown');
+            const eventsChevron = document.getElementById('eventsChevron');
+            if (eventsDropdown && !eventsDropdown.classList.contains('hidden')) {
+                eventsDropdown.classList.add('hidden');
+                eventsChevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleEventsDropdown() {
+            const dropdown = document.getElementById('eventsDropdown');
+            const chevron = document.getElementById('eventsChevron');
+            dropdown.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+            const servicesDropdown = document.getElementById('servicesDropdown');
+            const servicesChevron = document.getElementById('chevron');
+            if (servicesDropdown && !servicesDropdown.classList.contains('hidden')) {
+                servicesDropdown.classList.add('hidden');
+                servicesChevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars';
+            } else {
+                icon.className = 'fas fa-times';
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            const relativeContainers = e.target.closest('.relative');
+            if (!relativeContainers) {
+                const servicesDropdown = document.getElementById('servicesDropdown');
+                const servicesChevron = document.getElementById('chevron');
+                const eventsDropdown = document.getElementById('eventsDropdown');
+                const eventsChevron = document.getElementById('eventsChevron');
+
+                if (servicesDropdown && !servicesDropdown.classList.contains('hidden')) {
+                    servicesDropdown.classList.add('hidden');
+                    if (servicesChevron) servicesChevron.classList.remove('rotate-180');
+                }
+                if (eventsDropdown && !eventsDropdown.classList.contains('hidden')) {
+                    eventsDropdown.classList.add('hidden');
+                    if (eventsChevron) eventsChevron.classList.remove('rotate-180');
+                }
+            }
         });
     </script>
-    <script src="cursor.js"></script>
 </body>
+
 </html>
