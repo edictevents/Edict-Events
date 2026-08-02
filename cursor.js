@@ -1,82 +1,86 @@
 /**
- * Custom Animated Cursor with Sparkles for Edict Events
+ * Custom Animated Dual Cursor with Sparkles for Edict Events
  */
 (function () {
-  // Respect touch devices and reduced-motion preferences
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches) {
+  // Only disable on pure touch mobile devices (coarse pointer without fine control & small screen)
+  if (window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(pointer: fine)').matches && window.innerWidth < 768) {
     return;
   }
 
   function initCustomCursor() {
-    if (document.querySelector('.custom-cursor')) return;
+    if (document.querySelector('.custom-cursor-dot')) return;
 
     document.body.classList.add('has-custom-cursor');
 
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
+    const dot = document.createElement('div');
+    dot.className = 'custom-cursor-dot';
+    
+    const ring = document.createElement('div');
+    ring.className = 'custom-cursor-ring';
 
-    let mouseX = -100;
-    let mouseY = -100;
-    let cursorX = -100;
-    let cursorY = -100;
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    let mouseX = -100, mouseY = -100;
+    let dotX = -100, dotY = -100;
+    let ringX = -100, ringY = -100;
     let isHovering = false;
     let isActive = false;
     let isVisible = false;
     let lastSparkleTime = 0;
 
-    // Track mouse movement
     window.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
       if (!isVisible) {
         isVisible = true;
-        cursor.style.opacity = '1';
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
       }
 
-      // Create subtle sparkle trail when moving
       const now = Date.now();
-      if (now - lastSparkleTime > 40 && Math.random() < 0.35) {
+      if (now - lastSparkleTime > 45 && Math.random() < 0.4) {
         lastSparkleTime = now;
         createSparkle(e.clientX, e.clientY);
       }
     }, { passive: true });
 
-    // Handle mouse leaving and entering window
     document.addEventListener('mouseleave', function () {
       isVisible = false;
-      cursor.style.opacity = '0';
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
     });
 
     document.addEventListener('mouseenter', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
       isVisible = true;
-      cursor.style.opacity = '1';
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
     });
 
-    // Interactive elements hover detector
-    const interactiveSelector = 'a, button, input, select, textarea, [role="button"], label, summary, .btn, .card, nav a';
+    const interactiveSelector = 'a, button, input, select, textarea, [role="button"], label, summary, .btn, .service-card, .flip-card, nav a, details';
     
     document.addEventListener('mouseover', function (e) {
       if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
         isHovering = true;
-        cursor.classList.add('hover');
+        dot.classList.add('hover');
+        ring.classList.add('hover');
       }
     }, { passive: true });
 
     document.addEventListener('mouseout', function (e) {
       if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
         isHovering = false;
-        cursor.classList.remove('hover');
+        dot.classList.remove('hover');
+        ring.classList.remove('hover');
       }
     }, { passive: true });
 
-    // Click press feedback & star particle burst
     document.addEventListener('mousedown', function (e) {
       isActive = true;
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 6; i++) {
         createSparkle(e.clientX, e.clientY, true);
       }
     }, { passive: true });
@@ -85,31 +89,32 @@
       isActive = false;
     }, { passive: true });
 
-    // High performance animation frame
     function animate() {
-      // Smooth spring interpolation
-      cursorX += (mouseX - cursorX) * 0.45;
-      cursorY += (mouseY - cursorY) * 0.45;
+      // Dot follows cursor immediately
+      dotX += (mouseX - dotX) * 0.8;
+      dotY += (mouseY - dotY) * 0.8;
 
-      const scale = isHovering ? 'scale(1.25)' : (isActive ? 'scale(0.92)' : 'scale(1)');
-      // Pointer arrow tip offset (-5px x offset aligns tip perfectly with click point)
-      cursor.style.transform = `translate3d(${cursorX - 5}px, ${cursorY}px, 0) ${scale}`;
+      // Ring follows cursor with smooth spring delay
+      ringX += (mouseX - ringX) * 0.25;
+      ringY += (mouseY - ringY) * 0.25;
+
+      dot.style.transform = `translate3d(${dotX - 5}px, ${dotY - 5}px, 0)`;
+      ring.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0)`;
 
       requestAnimationFrame(animate);
     }
     requestAnimationFrame(animate);
 
-    // Sparkle generator
     function createSparkle(x, y, isBurst = false) {
       const sparkle = document.createElement('div');
       sparkle.className = 'custom-cursor-sparkle';
 
       const colors = ['#ff007f', '#3300fc', '#95008a', '#ff9900', '#00f0ff', '#ff00d4', '#ffd700'];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      const size = isBurst ? (Math.random() * 7 + 4) : (Math.random() * 5 + 3);
+      const size = isBurst ? (Math.random() * 6 + 4) : (Math.random() * 4 + 2);
 
       const angle = Math.random() * Math.PI * 2;
-      const distance = isBurst ? (Math.random() * 32 + 12) : (Math.random() * 14 + 4);
+      const distance = isBurst ? (Math.random() * 30 + 10) : (Math.random() * 12 + 4);
       const dx = Math.cos(angle) * distance;
       const dy = Math.sin(angle) * distance;
 
